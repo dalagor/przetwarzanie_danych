@@ -9,7 +9,7 @@ dplyr::select(iris,dplyr::starts_with("Pet")|dplyr::contains("dth")) #wybór kol
 #Star Wars
 sw <- dplyr::starwars
 
-#Wybór kolumny po typie danych
+#Wybór kolumny po typie danych z anonimową funkcją
 dplyr::select(sw,dplyr::where(\(x) is.numeric(x))) #Wybór kolumn numerycznej (x możemy zamienić na kolumne lub co kolwiek innego, definiowanie małej zmiennej tymczasowej)
 dplyr::select(sw,dplyr::where(\(x) is.character(x))& dplyr::contains("r")) #Wybór kolumn tekstowych, które zawierają r
 dplyr::select(sw,dplyr::where(\(x) is.numeric(x) & mean(x, na.rm=TRUE)>(100))) #Wybór kolumny numerycznej, której średnia jest większa niż 100
