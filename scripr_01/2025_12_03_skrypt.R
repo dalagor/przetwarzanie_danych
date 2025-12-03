@@ -38,4 +38,8 @@ p <- dplyr::rename_with(p,\(x)tolower(x),dplyr::where(\(x) is.numeric(x))) #Zmia
 #dplyr::relocate()
 
 p <- dplyr::relocate(p,dlugosc_dzioba,.before = wyspa)#przenosimy długość dzioba przed wyspę
-p <- dplyr::relocate(p,dlugosc_dzioba, dplyr::contains("e"),.after = species)#przenosimy wszystkie kolumny zawierające w nazwie "e" po kolumnie gatunek
+p <- dplyr::relocate(p, dplyr::contains("e"),.after = species)#przenosimy wszystkie kolumny zawierające w nazwie "e" po kolumnie gatunek
+
+nazwy <- colnames(p)
+nazwy_ord <- order(nazwy)
+p <- dplyr::select(p,order(colnames(p)))#segregacja kolumn po nazwach alfabetycznie
